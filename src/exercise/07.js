@@ -28,9 +28,10 @@ function App() {
         add item
       </button>
       <ul style={{listStyle: 'none', paddingLeft: 0}}>
+        {/* If we dont use a key in the array, react won't understand which element has changed and 
+        it will re-render everything. This can be a huge problem when we have big lists */}
         {items.map(item => (
-          // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li>
+          <li key={item.id}>
             <button onClick={() => removeItem(item)}>remove</button>{' '}
             <label htmlFor={`${item.id}-input`}>{item.value}</label>{' '}
             <input id={`${item.id}-input`} defaultValue={item.value} />
@@ -40,5 +41,4 @@ function App() {
     </div>
   )
 }
-
 export default App

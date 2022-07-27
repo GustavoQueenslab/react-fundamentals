@@ -14,16 +14,20 @@ import '../box-styles.css'
 // 🐨 also use the style prop to make the font italic
 // 💰 Here are available style attributes: backgroundColor, fontStyle
 
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+
+
+function Box({style,children,...props}){
+  return(
+<div style={style} className="box" {...props}>{children}</div>
+  )
+}
 
 function App() {
   return (
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+      {/* We use camelCase in the styles instead kebab-case. We also use 2 brackets because it's the
+      combination of a jsx expression and an object expression */}
+      <Box style={{backgroundColor:'green',fontStyle:'italic'}}>Green</Box>
     </div>
   )
 }
